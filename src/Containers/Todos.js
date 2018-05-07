@@ -5,11 +5,15 @@ import {
     Button,
     Paper,
     MenuItem,
-    Select,
-    FormControl,
-    FormHelperText
+    Select
 } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { bindActionCreators } from 'redux';
+
+import * as types from '../Actions/types';
+import { ActionCreators } from '../Actions';
 
 const styles = theme => ({
     paper: {
@@ -20,17 +24,17 @@ const styles = theme => ({
     },
     content: {
         margin: theme.spacing.unit * 12
-    }, 
+    },
     textField: {
         marginTop: theme.spacing.unit * 4
-    }, 
+    },
     categoryField: {
         marginTop: theme.spacing.unit * 4
-    }, 
+    },
     button: {
         marginTop: theme.spacing.unit * 4,
         marginRight: theme.spacing.unit * 12
-    }, 
+    },
     select: {
         marginLeft: theme.spacing.unit * 2
     }
@@ -54,7 +58,21 @@ class Todos extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.todo);
+        switch (this.state.category) {
+            case 'ICEBOX':
+                this.props.addTodo({ type: types.ADD_TODO_ICEBOX, payload: this.state.todo });
+                break;
+            case 'PROGRESS':
+                this.props.addTodo({ type: types.ADD_TODO_PROGRESS, payload: this.state.todo });
+                break;
+            case 'COMPLETED':
+                this.props.addTodo({ type: types.ADD_TODO_COMPLETED, payload: this.state.todo });
+                break;
+        };
+        this.setState({
+            todo: '', 
+            category: ''
+        });
     }
 
     handleCategoryChange(event) {
@@ -68,6 +86,7 @@ class Todos extends Component {
                 <div className={classes.content}>
                     <TextField
                         className={classes.textField}
+                        value={this.state.todo}
                         placeholder="New Todo"
                         onChange={this.handleInputChange} />
                     <div className={classes.categoryField}>
@@ -75,12 +94,12 @@ class Todos extends Component {
                         <Select className={classes.select}
                             value={this.state.category}
                             onChange={this.handleCategoryChange}>
-                            <MenuItem value={'Icebox'}>Icebox</MenuItem>
-                            <MenuItem value={'Progress'}>Progress</MenuItem>
-                            <MenuItem value={'Completed'}>Completed</MenuItem>
+                            <MenuItem value={'ICEBOX'}>Icebox</MenuItem>
+                            <MenuItem value={'PROGRESS'}>Progress</MenuItem>
+                            <MenuItem value={'COMPLETED'}>Completed</MenuItem>
                         </Select>
                     </div>
-                    <Button 
+                    <Button
                         className={classes.button}
                         onClick={this.handleSubmit}>Submit</Button>
                 </div>
@@ -89,4 +108,15 @@ class Todos extends Component {
     }
 };
 
-export default withStyles(styles)(Todos);
+const mapStateToProps = (state) => ({
+    todos: state.todosReducer
+});
+
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators(ActionCreators, dispatch)
+)
+
+export default compose(
+    withStyles(styles),
+    connect(mapStateToProps, mapDispatchToProps),
+)(Todos);

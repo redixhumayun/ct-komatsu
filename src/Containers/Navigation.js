@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { default as MUIAppBar } from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import { Link, withRouter } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles'
 
 import Button from 'material-ui/Button';
 
