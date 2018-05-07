@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getProgress } from '../Selectors';
+import { getCompleted } from '../../Selectors';
 
-class Progress extends Component {
+class Completed extends Component {
     render() {
         const todos = this.props.todos.map((todo, index) => 
             <li key={index}>{todo.todo}</li>
@@ -15,7 +15,7 @@ class Progress extends Component {
     }
 };
 
-Progress.propTypes = {
+Completed.propTypes = {
     dispatch: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
@@ -24,7 +24,7 @@ Progress.propTypes = {
 };
 
 export const mapStateToProps = (state) => ({
-    todos: getProgress(state)
+    todos: getCompleted(state)
 });
 
-export default connect(mapStateToProps, null)(Progress);
+export default connect(mapStateToProps, null)(Completed);
