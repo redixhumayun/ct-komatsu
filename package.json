@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "history": "^4.7.2",
     "material-design-icons": "^3.0.1",
     "material-ui": "^1.0.0-beta.41",
@@ -17,12 +18,15 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "npm-run-all --parallel server:start client:start",
+    "client:start": "react-app-rewired start",
+    "server:start": "json-server --watch db.json --port 8080",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.3",
     "path": "^0.12.7",
     "react-app-rewired": "^1.5.2",
     "workbox-webpack-plugin": "^3.1.0"

@@ -1,3 +1,7 @@
 export const ADD_TODO_ICEBOX = 'ADD_TODO_ICEBOX';
 export const ADD_TODO_PROGRESS = 'ADD_TODO_PROGRESS';
 export const ADD_TODO_COMPLETED = 'ADD_TODO_COMPLETED';
+
+export const GET_TODOS = 'GET_TODOS';
+export const GET_TODOS_SUCCESS = 'GET_TODOS_SUCCESS';
+export const GET_TODOS_FAIL = 'GET_TODOS_FAIL';

@@ -60,13 +60,15 @@ class Todos extends Component {
         event.preventDefault();
         switch (this.state.category) {
             case 'ICEBOX':
-                this.props.addTodo({ type: types.ADD_TODO_ICEBOX, payload: this.state.todo });
+                this.props.addTodo({ type: types.ADD_TODO_ICEBOX, todo: this.state.todo });
                 break;
             case 'PROGRESS':
-                this.props.addTodo({ type: types.ADD_TODO_PROGRESS, payload: this.state.todo });
+                this.props.addTodo({ type: types.ADD_TODO_PROGRESS, todo: this.state.todo });
                 break;
             case 'COMPLETED':
-                this.props.addTodo({ type: types.ADD_TODO_COMPLETED, payload: this.state.todo });
+                this.props.addTodo({ type: types.ADD_TODO_COMPLETED, todo: this.state.todo });
+                break;
+            default:
                 break;
         };
         this.setState({
@@ -105,6 +107,10 @@ class Todos extends Component {
                 </div>
             </Paper>
         )
+    }
+    
+    componentDidMount() {
+        this.props.getTodos({ type: types.GET_TODOS, payload: { request: {} } });
     }
 };
 

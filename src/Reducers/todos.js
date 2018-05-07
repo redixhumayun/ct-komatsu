@@ -8,17 +8,17 @@ export const todosReducer = createReducer({
 }, {
   [types.ADD_TODO_ICEBOX] (state, action) {
     return Object.assign({...state}, {
-        icebox: state.icebox.add(action.payload)
+        icebox: state.icebox.add(action.todo)
     });
   },
   [types.ADD_TODO_PROGRESS] (state, action) {
     return Object.assign({...state}, {
-        progress: state.progress.add(action.payload)
+        progress: state.progress.add(action.todo)
     });
   }, 
   [types.ADD_TODO_COMPLETED] (state, action) {
     return Object.assign({...state}, {
-        completed: state.completed.add(action.payload)
+        completed: state.completed.add(action.todo)
     });
   }
 })
