@@ -11,6 +11,7 @@ import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import * as types from '../Actions/types';
 import { ActionCreators } from '../Actions';
@@ -75,6 +76,7 @@ class Todos extends Component {
     }
 
     render() {
+        console.log(this.props);
         const { classes } = this.props;
         return (
             <Paper className={classes.paper}>
@@ -107,6 +109,17 @@ class Todos extends Component {
             this.props.getTodos({ type: types.GET_TODOS, payload: { request: {} } });
         }
     }
+};
+
+Todos.propTypes = {
+    addTodo: PropTypes.func.isRequired, 
+    classes: PropTypes.object.isRequired,
+    complete: PropTypes.bool.isRequired,
+    getTodos: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    todos: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
