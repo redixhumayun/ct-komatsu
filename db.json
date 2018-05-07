@@ -1,7 +1,7 @@
 {
     "todos": [
-        { "todo": "My First Todo", "category": "Icebox" },
-        { "todo": "My Second Todo", "category": "Progress" }, 
-        { "todo": "My Third Todo", "category": "Completed" }
+        { "todo": "Icebox Todo", "category": "Icebox" },
+        { "todo": "Progress Todo", "category": "Progress" }, 
+        { "todo": "Completed Todo", "category": "Completed" }
     ]
 }

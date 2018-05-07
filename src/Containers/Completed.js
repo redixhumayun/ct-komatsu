@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Completed extends Component {
+import { getCompleted } from '../Selectors';
+
+class Completed extends Component {
     render() {
+        const todos = this.props.todos.map((todo, index) => 
+            <li key={index}>{todo.todo}</li>
+        )
         return (
-            <div>Completed</div>
+            <ul>{todos}</ul>
         )
     }
 };
+
+export const mapStateToProps = (state) => ({
+    todos: getCompleted(state)
+});
+
+export default connect(mapStateToProps, null)(Completed);
