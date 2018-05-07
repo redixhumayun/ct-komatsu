@@ -58,19 +58,12 @@ class Todos extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        switch (this.state.category) {
-            case 'ICEBOX':
-                this.props.addTodo({ type: types.ADD_TODO_ICEBOX, todo: this.state.todo });
-                break;
-            case 'PROGRESS':
-                this.props.addTodo({ type: types.ADD_TODO_PROGRESS, todo: this.state.todo });
-                break;
-            case 'COMPLETED':
-                this.props.addTodo({ type: types.ADD_TODO_COMPLETED, todo: this.state.todo });
-                break;
-            default:
-                break;
-        };
+        this.props.addTodo({ 
+            type: types.ADD_TODO, 
+            payload: { 
+                category: this.state.category, todo: this.state.todo 
+            }
+        });
         this.setState({
             todo: '', 
             category: ''
@@ -96,9 +89,9 @@ class Todos extends Component {
                         <Select className={classes.select}
                             value={this.state.category}
                             onChange={this.handleCategoryChange}>
-                            <MenuItem value={'ICEBOX'}>Icebox</MenuItem>
-                            <MenuItem value={'PROGRESS'}>Progress</MenuItem>
-                            <MenuItem value={'COMPLETED'}>Completed</MenuItem>
+                            <MenuItem value={'Icebox'}>Icebox</MenuItem>
+                            <MenuItem value={'Progress'}>Progress</MenuItem>
+                            <MenuItem value={'Completed'}>Completed</MenuItem>
                         </Select>
                     </div>
                     <Button
@@ -110,12 +103,15 @@ class Todos extends Component {
     }
     
     componentDidMount() {
-        this.props.getTodos({ type: types.GET_TODOS, payload: { request: {} } });
+        if(!this.props.complete) {
+            this.props.getTodos({ type: types.GET_TODOS, payload: { request: {} } });
+        }
     }
 };
 
 const mapStateToProps = (state) => ({
-    todos: state.todosReducer
+    todos: state.todosReducer.todos, 
+    complete: state.todosReducer.complete
 });
 
 const mapDispatchToProps = (dispatch) => (

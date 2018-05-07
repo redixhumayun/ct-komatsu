@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getIcebox } from '../Selectors';
 
-export default class Icebox extends Component {
+class Icebox extends Component {
     render() {
+        const todos = this.props.todos.map((todo, index) => 
+            <li key={index}>{todo.todo}</li>
+        )
         return (
-            <div>Icebox</div>
+            <ul>{todos}</ul>
         )
     }
 };
+
+const mapStateToProps = (state) => ({
+    todos: getIcebox(state)
+});
+
+export default connect(mapStateToProps, null)(Icebox);
