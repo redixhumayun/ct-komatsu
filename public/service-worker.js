@@ -22,11 +22,22 @@ const networkOnlyStrategy = new workbox.strategies.NetworkOnly({
     plugins: [bgSyncPlugin]
 });
 
+const networkFirstStrategy = new workbox.strategies.NetworkFirst({
+    cacheName: 'dynamic-cache-v1'
+});
+
 const route = workbox.routing.registerRoute(
     'http://localhost:8080/todos',
     args => {
-        console.log('API hit');
         return networkOnlyStrategy.handle(args);
     },
     'POST'
+);
+
+workbox.routing.registerRoute(
+    'http://localhost:8080/dummy', 
+    args => {
+        return networkFirstStrategy.handle(args)
+    },
+    'GET'
 );
