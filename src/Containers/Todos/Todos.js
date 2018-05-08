@@ -13,7 +13,6 @@ import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import * as types from '../../Actions/types';
 import { ActionCreators } from '../../Actions';
 
 import styles from './styles'
