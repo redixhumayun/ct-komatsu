@@ -29,7 +29,6 @@ const networkFirstStrategy = new workbox.strategies.NetworkFirst({
 const route = workbox.routing.registerRoute(
     'http://localhost:8080/todos',
     args => {
-        console.log('API hit');
         return networkOnlyStrategy.handle(args);
     },
     'POST'
@@ -38,7 +37,6 @@ const route = workbox.routing.registerRoute(
 workbox.routing.registerRoute(
     'http://localhost:8080/dummy', 
     args => {
-        console.log(args);
         return networkFirstStrategy.handle(args)
     },
     'GET'
