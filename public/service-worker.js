@@ -6,3 +6,27 @@ if (workbox) {
     console.log(`Boo! Workbox didn't load 😬`);
 }
 console.log(workbox.core);
+
+const bgSyncPlugin = new workbox.backgroundSync.Plugin(
+    'Todo_Post',
+    {
+        callbacks: {
+            requestWillReplay: (request) => {
+                console.log("This request will now replay: ", request);
+            }
+        }
+    }
+);
+
+const networkOnlyStrategy = new workbox.strategies.NetworkOnly({
+    plugins: [bgSyncPlugin]
+});
+
+const route = workbox.routing.registerRoute(
+    'http://localhost:8080/todos',
+    args => {
+        console.log('API hit');
+        return networkOnlyStrategy.handle(args);
+    },
+    'POST'
+);
