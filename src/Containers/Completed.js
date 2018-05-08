@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { getCompleted } from '../../Selectors';
+import CompletedComponent from '../Components/Completed';
+import { getCompleted } from '../Selectors';
 
 class Completed extends Component {
     render() {
-        const todos = this.props.todos.map((todo, index) => 
-            <li key={index}>{todo.todo}</li>
-        )
         return (
-            <ul>{todos}</ul>
-        )
+            <CompletedComponent todos={this.props.todos} />
+        );
     }
 };
 

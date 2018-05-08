@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import IceboxComponent from '../Components/Icebox';
 
-import { getIcebox } from '../../Selectors';
+import { getIcebox } from '../Selectors';
 
 class Icebox extends Component {
     render() {
-        const todos = this.props.todos.map((todo, index) => 
-            <li key={index}>{todo.todo}</li>
-        )
         return (
-            <ul>{todos}</ul>
-        )
+            <IceboxComponent todos={this.props.todos} />
+        );
     }
 };
 

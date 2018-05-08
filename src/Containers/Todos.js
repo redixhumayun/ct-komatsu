@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
-import {
-    TextField,
-    InputLabel,
-    Button,
-    Paper,
-    MenuItem,
-    Select
-} from 'material-ui';
-import { withStyles } from 'material-ui/styles';
+
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import TodosComponent from '../Components/Todos';
 
-import * as types from '../../Actions/types';
-import { ActionCreators } from '../../Actions';
-
-import styles from './styles'
+import * as types from '../Actions/types';
+import { ActionCreators } from '../Actions';
 
 class Todos extends Component {
     constructor(props) {
@@ -51,36 +42,13 @@ class Todos extends Component {
         this.setState({ category: event.target.value });
     }
 
-    render() {
+    render() {debugger
         const { classes } = this.props;
         return (
-            <Paper className={classes.paper}>
-                <div className={classes.content}>
-                    <TextField
-                        className={classes.textField}
-                        label="New Todo"
-                        value={this.state.todo}
-                        onChange={this.handleInputChange} />
-
-                    <div className={classes.categoryField}>
-                        <InputLabel>Category</InputLabel>
-                        <Select className={classes.select}
-                            value={this.state.category}
-                            onChange={this.handleCategoryChange}>
-                            <MenuItem value={'Icebox'}>Icebox</MenuItem>
-                            <MenuItem value={'Progress'}>Progress</MenuItem>
-                            <MenuItem value={'Completed'}>Completed</MenuItem>
-                        </Select>
-                    </div>
-
-                    <Button
-                        size="medium"
-                        variant="raised"
-                        color="primary"
-                        className={classes.button}
-                        onClick={this.handleSubmit}>Submit</Button>
-                </div>
-            </Paper>
+          <TodosComponent classes={classes} handleCategoryChange={this.handleCategoryChange} 
+          handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange}
+          todo={this.state.todo} category={this.state.category}
+          />
         )
     }
     
@@ -111,7 +79,4 @@ const mapDispatchToProps = (dispatch) => (
     bindActionCreators(ActionCreators, dispatch)
 )
 
-export default compose(
-    withStyles(styles),
-    connect(mapStateToProps, mapDispatchToProps),
-)(Todos);
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);

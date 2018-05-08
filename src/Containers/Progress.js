@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ProgressComponent from '../Components/Progress';
 
-import { getProgress } from '../../Selectors';
+import { getProgress } from '../Selectors';
 
 class Progress extends Component {
     render() {
-        const todos = this.props.todos.map((todo, index) => 
-            <li key={index}>{todo.todo}</li>
-        )
         return (
-            <ul>{todos}</ul>
-        )
-    }
+         <ProgressComponent todos={this.props.todos}/>
+        );
+     }
 };
 
 Progress.propTypes = {
