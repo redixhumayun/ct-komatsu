@@ -59,6 +59,7 @@ class Todos extends Component {
                     <TextField
                         className={classes.textField}
                         label="New Todo"
+                        value={this.state.todo}
                         onChange={this.handleInputChange} />
 
                     <div className={classes.categoryField}>
