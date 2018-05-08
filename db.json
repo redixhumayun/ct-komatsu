@@ -14,66 +14,6 @@
       "id": 3,
       "todo": "Completed Todo",
       "category": "Completed"
-    },
-    {
-      "category": "Completed",
-      "todo": "New Todo",
-      "id": 4
-    },
-    {
-      "category": "Completed",
-      "todo": "sasas",
-      "id": 5
-    },
-    {
-      "category": "",
-      "todo": "",
-      "id": 6
-    },
-    {
-      "category": "Progress",
-      "todo": "",
-      "id": 7
-    },
-    {
-      "category": "",
-      "todo": "sasasass",
-      "id": 8
-    },
-    {
-      "category": "",
-      "todo": "",
-      "id": 9
-    },
-    {
-      "category": "",
-      "todo": "",
-      "id": 10
-    },
-    {
-      "category": "",
-      "todo": "",
-      "id": 11
-    },
-    {
-      "category": "Completed",
-      "todo": "sasasassdsdsdd",
-      "id": 12
-    },
-    {
-      "category": "",
-      "todo": "",
-      "id": 13
-    },
-    {
-      "category": "Progress",
-      "todo": "sdasdsadsd",
-      "id": 14
-    },
-    {
-      "category": "Completed",
-      "todo": "sdasd",
-      "id": 15
     }
   ]
 }
