@@ -12,6 +12,7 @@ export const addTodo = ({ id, category, todo }) => ({
     This is an action creator to dispatch an action to fetch todos
     from a server on initial load
 */
+
 export const getTodos = () => ({ type: types.GET_TODOS, payload: { request: {} } });
 
 /*
@@ -27,3 +28,4 @@ export const postTodo = ({ id, category, todo }) => ({
         }
     }
 });
+

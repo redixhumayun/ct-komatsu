@@ -13,32 +13,10 @@ import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import { ActionCreators } from '../Actions';
+import * as types from '../../Actions/types';
+import { ActionCreators } from '../../Actions';
 
-const styles = theme => ({
-    paper: {
-        marginTop: theme.spacing.unit * 8,
-        width: '50%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-    },
-    content: {
-        margin: theme.spacing.unit * 12
-    },
-    textField: {
-        marginTop: theme.spacing.unit * 4
-    },
-    categoryField: {
-        marginTop: theme.spacing.unit * 4
-    },
-    button: {
-        marginTop: theme.spacing.unit * 4,
-        marginRight: theme.spacing.unit * 12
-    },
-    select: {
-        marginLeft: theme.spacing.unit * 2
-    }
-})
+import styles from './styles'
 
 class Todos extends Component {
     constructor(props) {
@@ -80,9 +58,9 @@ class Todos extends Component {
                 <div className={classes.content}>
                     <TextField
                         className={classes.textField}
-                        value={this.state.todo}
-                        placeholder="New Todo"
+                        label="New Todo"
                         onChange={this.handleInputChange} />
+
                     <div className={classes.categoryField}>
                         <InputLabel>Category</InputLabel>
                         <Select className={classes.select}
@@ -93,7 +71,11 @@ class Todos extends Component {
                             <MenuItem value={'Completed'}>Completed</MenuItem>
                         </Select>
                     </div>
+
                     <Button
+                        size="medium"
+                        variant="raised"
+                        color="primary"
                         className={classes.button}
                         onClick={this.handleSubmit}>Submit</Button>
                 </div>

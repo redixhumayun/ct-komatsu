@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getIcebox } from '../Selectors';
+import { getIcebox } from '../../Selectors';
 
 class Icebox extends Component {
     render() {
