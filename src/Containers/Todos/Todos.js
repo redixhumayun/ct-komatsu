@@ -23,7 +23,8 @@ class Todos extends Component {
         super(props);
         this.state = {
             todo: '',
-            category: ''
+            category: '', 
+            counter: 4
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
@@ -36,15 +37,13 @@ class Todos extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.addTodo({ 
-            type: types.ADD_TODO, 
-            payload: { 
-                category: this.state.category, todo: this.state.todo 
-            }
-        });
+        const { id, category, todo } = this.state;
+        this.props.addTodo({ id, category, todo });
+        this.props.postTodo({ id, category, todo });
         this.setState({
             todo: '', 
-            category: ''
+            category: '', 
+            counter: this.state.counter + 1
         });
     }
 
@@ -86,7 +85,7 @@ class Todos extends Component {
     
     componentDidMount() {
         if(!this.props.complete) {
-            this.props.getTodos({ type: types.GET_TODOS, payload: { request: {} } });
+            this.props.getTodos();
         }
     }
 };
