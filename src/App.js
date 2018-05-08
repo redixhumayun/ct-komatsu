@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import Routes from './Routes';
+import Routes from './Routes'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Routes />
-    );
+    )
   }
 }
 
-export default withRouter(App);
+export default withRouter(App)

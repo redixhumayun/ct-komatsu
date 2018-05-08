@@ -19,9 +19,12 @@
     "redux": "^4.0.0",
     "redux-axios-middleware": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "standard": "^11.0.1"
   },
   "scripts": {
+    "lint": "./node_modules/.bin/standard src/*",
+    "lint-fix": "./node_modules/.bin/standard src/*/**/*** --fix",
     "start": "npm-run-all --parallel server:start client:start",
     "client:start": "react-app-rewired start",
     "server:start": "json-server --watch db.json --port 8080",
