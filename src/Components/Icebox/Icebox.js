@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
-import { getIcebox } from '../../Selectors';
+import React from 'react';
 
 const Icebox = (props) => {
     return (

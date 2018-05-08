@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-import { getCompleted } from '../../Selectors';
+import React from 'react';
 
 const Completed = (props) => {
     return (
-            <ul>
-                { props.todos.map((todo, index) =>  <li key={index}>{todo.todo}</li>) }
-            </ul>
+        <ul>
+            {props.todos.map((todo, index) => <li key={index}>{todo.todo}</li>)}
+        </ul>
     )
 };
 
