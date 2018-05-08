@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
-import * as todosReducer from './todos';
+import { combineReducers } from 'redux'
+import * as todosReducer from './todos'
 
-export default combineReducers({ ...todosReducer });
+export default combineReducers({ ...todosReducer })
