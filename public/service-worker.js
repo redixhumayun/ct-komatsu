@@ -22,6 +22,10 @@ const networkOnlyStrategy = new workbox.strategies.NetworkOnly({
     plugins: [bgSyncPlugin]
 });
 
+const networkFirstStrategy = new workbox.strategies.NetworkFirst({
+    cacheName: 'dynamic-cache-v1'
+});
+
 const route = workbox.routing.registerRoute(
     'http://localhost:8080/todos',
     args => {
@@ -29,4 +33,13 @@ const route = workbox.routing.registerRoute(
         return networkOnlyStrategy.handle(args);
     },
     'POST'
+);
+
+workbox.routing.registerRoute(
+    'http://localhost:8080/todos', 
+    args => {
+        console.log(args);
+        return networkFirstStrategy.handle(args)
+    },
+    'GET'
 );

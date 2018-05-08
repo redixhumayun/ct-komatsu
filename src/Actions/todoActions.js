@@ -1,7 +1,7 @@
 import * as types from './types';
 /*
-    This is a generic action creator which can be used to service 
-    three separate cases
+    This is a an action creator to dispatch an action to add 
+    a new todo
 */
 export const addTodo = ({ id, category, todo }) => ({ 
     type: types.ADD_TODO, 
@@ -13,7 +13,14 @@ export const addTodo = ({ id, category, todo }) => ({
     from a server on initial load
 */
 
-export const getTodos = () => ({ type: types.GET_TODOS, payload: { request: {} } });
+export const getTodos = () => ({ 
+    type: types.GET_TODOS, 
+    payload: { 
+        request: {
+            url: '/todos'
+        } 
+    } 
+});
 
 /*
     This is an action creator to dispatch an action to post todos
@@ -23,6 +30,7 @@ export const postTodo = ({ id, category, todo }) => ({
     type: types.POST_TODO,
     payload: {
         request: {
+            url: '/todos',
             method: 'POST',
             data: { id, category, todo }
         }
