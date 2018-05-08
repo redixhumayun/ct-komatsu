@@ -88,6 +88,7 @@ class Todos extends Component {
         if(!this.props.complete) {
             this.props.getTodos();
         }
+        this.props.getDummyData();
     }
 };
 

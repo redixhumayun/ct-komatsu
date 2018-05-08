@@ -36,7 +36,7 @@ const route = workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    'http://localhost:8080/todos', 
+    'http://localhost:8080/dummy', 
     args => {
         console.log(args);
         return networkFirstStrategy.handle(args)
